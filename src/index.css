@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@plugin "daisyui";
+
+
+@layer base {
+  :root {
+    /* ETOOBLO AI - Palettes inspirées de la première page */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Primary: Bleu vif de la première page */
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary: Gris léger */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* Muted */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Accent: Violet pour les gradients */
+    --accent: 267 100% 69%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Destructive */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --radius: 1rem;
+
+    /* Couleurs pour les gradients de la première page */
+    --purple-500: 267 100% 69%;
+    --pink-500: 330 100% 69%;
+    --rose-500: 350 100% 69%;
+    --teal-500: 173 80% 40%;
+
+    /* Gardez les couleurs sage si besoin pour compatibilité */
+    --sage-blue-50: 214 100% 97%;
+    --sage-blue-100: 214 95% 93%;
+    --sage-blue-500: 221 83% 53%;
+    --sage-blue-600: 221 83% 46%;
+    --sage-blue-700: 222 47% 31%;
+    --sage-blue-900: 222 47% 11%;
+    
+    --sage-emerald-50: 152 81% 96%;
+    --sage-emerald-100: 149 80% 90%;
+    --sage-emerald-500: 160 84% 39%;
+    --sage-emerald-600: 161 94% 30%;
+    
+    --sage-cream: 40 33% 98%;
+    --sage-cream-dark: 40 20% 94%;
+
+    /* Gradients spécifiques ETOOBLO */
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(267 100% 69%) 100%);
+    --gradient-purple-pink: linear-gradient(135deg, hsl(267 100% 69%) 0%, hsl(330 100% 69%) 100%);
+    --gradient-pink-rose: linear-gradient(135deg, hsl(330 100% 69%) 0%, hsl(350 100% 69%) 100%);
+    --gradient-accent-teal: linear-gradient(135deg, hsl(173 80% 40%) 0%, hsl(152 76% 46%) 100%);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 267 100% 69%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary-gradient {
+    @apply bg-gradient-to-r from-primary to-[hsl(243_75%_59%)] text-primary-foreground shadow-md hover:shadow-lg transition-all duration-200;
+  }
+
+  .btn-success-gradient {
+    @apply bg-gradient-to-r from-accent to-[hsl(152_76%_46%)] text-accent-foreground shadow-md hover:shadow-lg transition-all duration-200;
+  }
+
+  .card-elevated {
+    @apply bg-card rounded-xl shadow-md border border-border/50 transition-all duration-200 hover:shadow-lg;
+  }
+
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20;
+  }
+
+  .chat-bubble-user {
+    @apply bg-primary text-primary-foreground rounded-2xl rounded-br-md px-4 py-3;
+  }
+
+  .chat-bubble-ai {
+    @apply bg-muted text-foreground rounded-2xl rounded-bl-md px-4 py-3;
+  }
+
+  .chat-source-citation {
+    @apply bg-sage-blue-50 border-l-4 border-primary rounded-r-lg px-3 py-2 text-sm;
+  }
+
+  .pass-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-accent to-[hsl(152_76%_46%)] text-accent-foreground rounded-full text-sm font-semibold shadow-sm;
+  }
+
+  .subject-card {
+    @apply relative overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg cursor-pointer;
+  }
+
+  .input-phone {
+    @apply w-full h-14 px-4 text-lg font-medium bg-muted border-2 border-transparent rounded-xl focus:border-primary focus:ring-0 transition-colors;
+  }
+
+  .otp-input {
+    @apply w-12 h-14 text-center text-2xl font-bold bg-muted border-2 border-transparent rounded-xl focus:border-primary focus:ring-0 transition-colors;
+  }
+
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg border-t border-border safe-area-pb;
+  }
+
+  .nav-item {
+    @apply flex flex-col items-center gap-1 py-2 px-4 text-muted-foreground transition-colors;
+  }
+
+  .nav-item-active {
+    @apply text-primary;
+  }
+
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  .safe-area-pt {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+   .glass-card {
+    @apply bg-white/80 dark:bg-black/80 backdrop-blur-lg border border-white/20 dark:border-white/10 shadow-lg rounded-xl;
+  }
+  
+  .glass-strong {
+    @apply bg-white/95 dark:bg-black/95 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+  
+  /* Gradients spécifiques ETOOBLO */
+  .btn-primary-gradient {
+    @apply bg-gradient-to-r from-primary via-[hsl(267_100%_69%)] to-[hsl(330_100%_69%)] text-white hover:opacity-90 transition-opacity;
+  }
+  
+  .btn-success-gradient {
+    @apply bg-gradient-to-r from-[hsl(173_80%_40%)] to-[hsl(152_76%_46%)] text-white hover:opacity-90 transition-opacity;
+  }
+  
+  .shadow-glow {
+    @apply shadow-[0_0_30px_hsl(var(--primary)/0.3)];
+  }
+  
+  /* Cards avec effet hover */
+  .feature-card {
+    @apply glass-card p-6 hover:scale-[1.03] transition-transform duration-300;
+  }
+  
+  /* Safe areas */
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  .safe-area-pt {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+@layer utilities {
+  .bg-sage-blue-50 {
+    background-color: hsl(var(--sage-blue-50));
+  }
+  
+  .bg-sage-emerald-50 {
+    background-color: hsl(var(--sage-emerald-50));
+  }
+
+  .text-sage-blue-600 {
+    color: hsl(var(--sage-blue-600));
+  }
+
+  .text-sage-emerald-600 {
+    color: hsl(var(--sage-emerald-600));
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceSubtle 2s infinite;
+  }
+   .text-purple-500 {
+    color: hsl(267 100% 69%);
+  }
+  
+  .text-pink-500 {
+    color: hsl(330 100% 69%);
+  }
+  
+  .text-rose-500 {
+    color: hsl(350 100% 69%);
+  }
+  
+  .text-teal-500 {
+    color: hsl(173 80% 40%);
+  }
+  
+  .bg-purple-500 {
+    background-color: hsl(267 100% 69%);
+  }
+  
+  .bg-pink-500 {
+    background-color: hsl(330 100% 69%);
+  }
+  
+  .bg-rose-500 {
+    background-color: hsl(350 100% 69%);
+  }
+  
+  .bg-teal-500 {
+    background-color: hsl(173 80% 40%);
+  }
+  
+  /* Animations supplémentaires */
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes bounceSubtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  /* Animations 3D pour les flashcards */
+@keyframes flip {
+  0% { transform: rotateY(0); }
+  100% { transform: rotateY(180deg); }
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Prose personnalisé pour le Markdown */
+.prose {
+  @apply text-foreground;
+}
+
+.prose strong {
+  @apply text-primary font-semibold;
+}
+
+.prose em {
+  @apply text-muted-foreground;
+}
+
+.prose a {
+  @apply text-primary no-underline hover:underline;
+}
+
+.prose code {
+  @apply bg-muted px-1.5 py-0.5 rounded-md text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-muted p-4 rounded-xl overflow-x-auto;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary/30 pl-4 py-2 my-4 bg-muted/30 rounded-r-lg;
+}
+
+.prose blockquote p::before,
+.prose blockquote p::after {
+  content: none;
+}
+
+.prose table {
+  @apply w-full border-collapse;
+}
+
+.prose th {
+  @apply bg-muted/50 px-4 py-2 text-left text-sm font-semibold;
+}
+
+.prose td {
+  @apply px-4 py-2 text-sm border-t border-border;
+}
+
+.prose img {
+  @apply rounded-lg shadow-lg my-4;
+}
+
+.prose hr {
+  @apply my-6 border-border;
+}
+/* src/index.css ou src/App.css */
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes slow-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-slow-spin {
+  animation: slow-spin 12s linear infinite;
+}
+/* Animation pour la barre de progression */
+@keyframes pulse-progress {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.progress-pulse {
+  animation: pulse-progress 2s ease-in-out infinite;
+}
+
+/* Style pour le curseur personnalisé */
+.custom-slider .slider-track {
+  background: linear-gradient(to right, #667eea, #764ba2);
+}
+
+/* Styles pour react-pdf */
+.react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.react-pdf__Page {
+  max-width: 100%;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.react-pdf__Page canvas {
+  max-width: 100%;
+  height: auto !important;
+  border-radius: 0.5rem;
+}
+
+/* Barre de progression personnalisée */
+.pdf-progress-bar {
+  transition: width 0.3s ease;
+}
+}
+
+  
+

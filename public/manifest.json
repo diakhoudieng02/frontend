@@ -1,0 +1,15 @@
+{
+  "name": "DocuSage AI",
+  "short_name": "DocuSage",
+  "description": "Assistant de révision intelligent pour lycéens",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "icons": [
+  
+  ],
+  "categories": ["education", "productivity"],
+  "lang": "fr"
+}
